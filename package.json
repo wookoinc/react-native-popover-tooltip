@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wookoinc/react-native-popover-tooltip"
+    "url": "git+https://github.com/robsoncoelho/react-native-popover-tooltip"
   },
   "keywords": [
     "reactnative",
@@ -18,7 +18,7 @@
   "author": "Lu Sun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wookoinc/react-native-popover-tooltip/issues"
+    "url": "https://github.com/robsoncoelho/react-native-popover-tooltip/issues"
   },
-  "homepage": "https://github.com/wookoinc/react-native-popover-tooltip"
+  "homepage": "https://github.com/robsoncoelho/react-native-popover-tooltip"
 }

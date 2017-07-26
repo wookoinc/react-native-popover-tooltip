@@ -86,9 +86,7 @@ class PopoverTooltip extends React.Component {
       <TouchableOpacity
         ref={component => this._component_wrapper = component}
         style={[componentWrapperStyle]}
-        onPress={this.props.onPress}
-        onLongPress={this.toggle.bind(this)}
-        delayLongPress={this.props.delayLongPress}
+        onPress={this.toggle.bind(this)}
         activeOpacity={1.0}
       >
         <Animated.View style={[{opacity:this.state.opposite_opacity}, this.props.componentContainerStyle]}>
@@ -125,10 +123,10 @@ class PopoverTooltip extends React.Component {
                     if (this.state.will_popup && tooltip_container_width > 0 && tooltip_container_height > 0) {
                       this._component_wrapper.measure((x, y, width, height, pageX, pageY) => {
                         let tooltip_container_x_final=pageX+tooltip_container_width+(width-tooltip_container_width)/2>window.width? window.width-tooltip_container_width : pageX+(width-tooltip_container_width)/2;
-                        let tooltip_container_y_final=pageY-tooltip_container_height-20;
+                        let tooltip_container_y_final=pageY-tooltip_container_height-5;
                         let tooltip_triangle_down=true;
-                        if (pageY-tooltip_container_height-20<0) {
-                          tooltip_container_y_final=pageY+height+20;
+                        if (pageY-tooltip_container_height-5<0) {
+                          tooltip_container_y_final=pageY+height+5;
                           tooltip_triangle_down=false;
                         }
                         let tooltip_container_x = this.state.tooltip_container_scale.interpolate({
@@ -137,7 +135,7 @@ class PopoverTooltip extends React.Component {
                         });
                         let tooltip_container_y = this.state.tooltip_container_scale.interpolate({
                           inputRange: [0, 1],
-                          outputRange: [tooltip_container_y_final+tooltip_container_height/2+20, tooltip_container_y_final]
+                          outputRange: [tooltip_container_y_final+tooltip_container_height/2+5, tooltip_container_y_final]
                         });
                         let button_component_container_scale = this.state.tooltip_container_scale.interpolate({
                           inputRange: [0, 1],
@@ -211,7 +209,7 @@ class PopoverTooltip extends React.Component {
         this.state.tooltip_container_scale,
         {
           toValue: 1,
-          tension: this.props.springConfig && this.props.springConfig.tension? this.props.springConfig.tension : 100,
+          tension: this.props.springConfig && this.props.springConfig.tension? this.props.springConfig.tension : 200,
           friction: this.props.springConfig && this.props.springConfig.friction? this.props.springConfig.friction : 7
         }
       );
@@ -280,7 +278,7 @@ PopoverTooltip.defaultProps = {
   buttonComponentExpandRatio: 1.0,
   labelSeparatorColor: '#E1E1E1',
   onRequestClose: () => {},
-  delayLongPress: 100
+  delayLongPress: 0
 };
 
 export default PopoverTooltip;

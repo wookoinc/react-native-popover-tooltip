@@ -14,15 +14,13 @@ const StylePropType = React.PropTypes.oneOfType([
 ]);
 
 const PopoverTooltipItem = ({ onPress, containerStyle, label, labelStyle }) => (
-  <View style={[styles.container, containerStyle]}>
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
       {
         typeof label === 'string' ?
           <Text style={[labelStyle]}>{label}</Text> :
           label()
       }
     </TouchableOpacity>
-  </View>
 );
 
 PopoverTooltipItem.propTypes = {
