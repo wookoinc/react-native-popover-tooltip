@@ -1,6 +1,6 @@
 {
   "name": "react-native-popover-tooltip",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ReactNative component showing tooltip with menu items.",
   "main": "src/index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/wookoinc/react-native-popover-tooltip/issues"
   },
-  "homepage": "https://github.com/wookoinc/react-native-popover-tooltip"
+  "homepage": "https://github.com/wookoinc/react-native-popover-tooltip",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
