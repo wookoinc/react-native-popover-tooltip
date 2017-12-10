@@ -378,7 +378,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
         toValue: 1,
         duration: this.props.timingConfig && this.props.timingConfig.duration
           ? this.props.timingConfig.duration
-          : 200,
+          : 20,
       }
     );
     if (this.props.animationType == 'spring') {
@@ -388,7 +388,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
           toValue: 1,
           tension: this.props.springConfig && this.props.springConfig.tension
             ? this.props.springConfig.tension
-            : 100,
+            : 20,
           friction: this.props.springConfig && this.props.springConfig.friction
             ? this.props.springConfig.friction
             : 7,
