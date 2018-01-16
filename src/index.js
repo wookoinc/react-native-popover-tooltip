@@ -437,6 +437,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     } else {
       this.openModal();
     }
+    return this.state.isModalOpen;
   }
 
 }
