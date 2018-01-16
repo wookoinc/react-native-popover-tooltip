@@ -39,6 +39,7 @@ type Props = {
   onRequestClose: () => void,
   triangleOffset: number,
   delayLongPress: number,
+  hitSlop?: { top: number, left: number, bottom: number, right: number },
   onOpenTooltipMenu?: () => void,
   onCloseTooltipMenu?: () => void,
   onPress?: () => void,
@@ -75,6 +76,12 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
       onPress: PropTypes.func.isRequired,
     })).isRequired,
     componentWrapperStyle: ViewPropTypes.style,
+	hitSlop  : PropTypes.shape({
+		top: PropTypes.number,
+		left: PropTypes.number,
+		bottom: PropTypes.number,
+		right: PropTypes.number
+	}),
     overlayStyle: ViewPropTypes.style,
     tooltipContainerStyle: ViewPropTypes.style,
     labelContainerStyle: ViewPropTypes.style,
@@ -292,6 +299,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
         style={this.props.componentWrapperStyle}
         onPress={this.props.onPress}
         onLongPress={this.toggle}
+        hitSlop={this.props.hitSlop}
         delayLongPress={this.props.delayLongPress}
         activeOpacity={1.0}
       >
