@@ -172,7 +172,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     componentWrapper.measure((x, y, width, height, pageX, pageY) => {
       const fullWidth = pageX + tooltipContainerWidth
         + (width - tooltipContainerWidth) / 2;
-      const tooltipContainerX_final = fullWidth > window.width
+      let tooltipContainerX_final = fullWidth > window.width
         ? window.width - tooltipContainerWidth
         : pageX + (width - tooltipContainerWidth) / 2;
       //tooltip handling for right side
