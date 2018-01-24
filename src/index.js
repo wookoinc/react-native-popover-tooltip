@@ -172,13 +172,18 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     componentWrapper.measure((x, y, width, height, pageX, pageY) => {
       const fullWidth = pageX + tooltipContainerWidth
         + (width - tooltipContainerWidth) / 2;
-      const tooltipContainerX_final = fullWidth > window.width
+      let tooltipContainerX_final = fullWidth > window.width
         ? window.width - tooltipContainerWidth
         : pageX + (width - tooltipContainerWidth) / 2;
+      //tooltip handling for right side
       let tooltipContainerY_final = this.state.tooltipTriangleDown
         ? pageY - tooltipContainerHeight - 20
         : pageY + tooltipContainerHeight - 20;
       let tooltipTriangleDown = this.state.tooltipTriangleDown;
+      if( tooltipContainerX_final < 0 ) {
+        tooltipContainerX_final = 0;
+      }
+      //tooltip handling added to left side 
       if (pageY - tooltipContainerHeight - 20 < 0) {
         tooltipContainerY_final = pageY + height + 20;
         tooltipTriangleDown = false;
@@ -437,6 +442,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     } else {
       this.openModal();
     }
+    return this.state.isModalOpen;
   }
 
 }

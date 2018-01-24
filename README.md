@@ -205,4 +205,4 @@ class App extends React.Component {
 
 | Property | Description |
 |----------------|---------------|
-| toggle | Open or hide popover tooltip |
+| toggle | Open or hide popover tooltip and returns the state of the modal |
