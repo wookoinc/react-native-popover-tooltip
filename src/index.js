@@ -38,6 +38,7 @@ type Props = {
   setBelow: bool,
   animationType?: "timing" | "spring",
   onRequestClose: () => void,
+  onDismiss: () => void,
   triangleOffset: number,
   delayLongPress: number,
   onOpenTooltipMenu?: () => void,
@@ -84,6 +85,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     setBelow: PropTypes.bool,
     animationType: PropTypes.oneOf([ "timing", "spring" ]),
     onRequestClose: PropTypes.func,
+    onDismiss: PropTypes.func,
     triangleOffset: PropTypes.number,
     delayLongPress: PropTypes.number,
     onOpenTooltipMenu: PropTypes.func,
@@ -98,6 +100,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     buttonComponentExpandRatio: 1.0,
     labelSeparatorColor: "#E1E1E1",
     onRequestClose: () => {},
+    onDismiss: () => {},
     setBelow: false,
     delayLongPress: 100,
     triangleOffset: 0,
@@ -305,6 +308,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
         <Modal
           visible={this.state.isModalOpen}
           onRequestClose={this.props.onRequestClose}
+          onDismiss={this.props.onDismiss}
           transparent
         >
           <Animated.View style={[
