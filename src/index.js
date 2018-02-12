@@ -102,6 +102,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     triangleOffset: 0,
   };
   wrapperComponent: ?TouchableOpacity;
+  callOnDismiss: ?(() => void) = null;
 
   constructor(props: Props) {
     super(props);
@@ -150,8 +151,12 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
   }
 
   onPressItem = (userCallback: () => void) => {
+    if (this.state.isModalOpen) {
+      this.callOnDismiss = userCallback;
+    } else {
+      userCallback();
+    }
     this.toggle();
-    userCallback();
   }
 
   onInnerContainerLayout = (
@@ -304,6 +309,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
         <Modal
           visible={this.state.isModalOpen}
           onRequestClose={this.props.onRequestClose}
+          onDismiss={this.onDismiss}
           transparent
         >
           <Animated.View style={[
@@ -436,6 +442,13 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
       this.hideModal();
     } else {
       this.openModal();
+    }
+  }
+
+  onDismiss = () => {
+    if (this.callOnDismiss) {
+      this.callOnDismiss();
+      this.callOnDismiss = null;
     }
   }
 
