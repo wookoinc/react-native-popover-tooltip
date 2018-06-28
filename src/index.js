@@ -175,7 +175,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
       let tooltipContainerX_final = fullWidth > window.width
         ? window.width - tooltipContainerWidth
         : pageX + (width - tooltipContainerWidth) / 2;
-      tooltipContainerX_final = Math.max(10, tooltipContainerX_final);
+      tooltipContainerX_final = Math.max(0, tooltipContainerX_final);
       let tooltipContainerY_final = this.state.tooltipTriangleDown
         ? pageY - tooltipContainerHeight - 20
         : pageY + tooltipContainerHeight - 20;
