@@ -116,7 +116,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
       buttonComponentContainerScale: 1,
       tooltipTriangleDown: !props.setBelow,
       tooltipTriangleLeftMargin: 0,
-      triangleOffset: props.triangleOffset,
+      triangleOffset: props.triangleOffset || 0,
       willPopUp: false,
       oppositeOpacity: undefined,
       tooltipContainerX: undefined,
@@ -438,7 +438,6 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
       this.openModal();
     }
   }
-
 }
 
 const styles = StyleSheet.create({
