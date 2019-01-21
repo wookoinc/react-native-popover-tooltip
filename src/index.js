@@ -46,6 +46,7 @@ type Props = {
   timingConfig?: { duration?: number },
   springConfig?: { tension?: number, friction?: number },
   opacityChangeDuration?: number,
+  showTriangle?: bool,
 };
 type State = {
   isModalOpen: bool,
@@ -92,6 +93,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     timingConfig: PropTypes.object,
     springConfig: PropTypes.object,
     opacityChangeDuration: PropTypes.number,
+    showTriangle: PropTypes.bool,
   };
   static defaultProps = {
     buttonComponentExpandRatio: 1.0,
@@ -100,6 +102,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     setBelow: false,
     delayLongPress: 100,
     triangleOffset: 0,
+    showTriangle: true
   };
   wrapperComponent: ?TouchableOpacity;
 
@@ -328,14 +331,14 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
                   onLayout={this.onInnerContainerLayout}
                   style={styles.innerContainer}
                 >
-                  {triangleUp}
+                  {this.props.showTriangle && triangleUp}
                   <View style={[
                     styles.allItemContainer,
                     this.props.tooltipContainerStyle,
                   ]}>
                     {items}
                   </View>
-                  {triangleDown}
+                  {this.props.showTriangle && triangleDown}
                 </View>
               </Animated.View>
             </TouchableOpacity>
