@@ -322,6 +322,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
                   styles.tooltipContainer,
                   this.props.tooltipContainerStyle,
                   tooltipContainerStyle,
+                  { marginTop: -20 }
                 ]}
               >
                 <View
@@ -343,7 +344,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
           <Animated.View style={{
             position: 'absolute',
             left: this.state.x,
-            top: this.state.y,
+            top: this.state.y - 24,
             width: this.state.width,
             height: this.state.height,
             backgroundColor: 'transparent',
