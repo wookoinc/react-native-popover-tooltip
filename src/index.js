@@ -42,6 +42,8 @@ type Props = {
   onOpenTooltipMenu?: () => void,
   onCloseTooltipMenu?: () => void,
   onPress?: () => void,
+  onLongPress?: () => void,
+  onHideModal?: () => void,
   componentContainerStyle?: StyleObj,
   timingConfig?: { duration?: number },
   springConfig?: { tension?: number, friction?: number },
@@ -98,6 +100,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     labelSeparatorColor: "#E1E1E1",
     onRequestClose: () => {},
     setBelow: false,
+    onLongPress: () => null,
     delayLongPress: 100,
     triangleOffset: 0,
   };
@@ -322,6 +325,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
                   styles.tooltipContainer,
                   this.props.tooltipContainerStyle,
                   tooltipContainerStyle,
+                  { marginTop: -20 }
                 ]}
               >
                 <View
@@ -343,7 +347,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
           <Animated.View style={{
             position: 'absolute',
             left: this.state.x,
-            top: this.state.y,
+            top: this.state.y - 24,
             width: this.state.width,
             height: this.state.height,
             backgroundColor: 'transparent',
@@ -432,9 +436,12 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
   }
 
   toggle = () => {
+    
     if (this.state.isModalOpen) {
       this.hideModal();
+      this.props.onRequestClose()
     } else {
+      this.props.onLongPress()
       this.openModal();
     }
   }
