@@ -29,6 +29,7 @@ type Props = {
   buttonComponentExpandRatio: number,
   items: $ReadOnlyArray<{ +label: Label, onPress: () => void }>,
   componentWrapperStyle?: StyleObj,
+  overlayButtonStyle?: StyleObj,
   overlayStyle?: StyleObj,
   tooltipContainerStyle?: StyleObj,
   labelContainerStyle?: StyleObj,
@@ -125,7 +126,7 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const newOppositeOpacity = this.state.opacity.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 0],
@@ -355,6 +356,9 @@ class PopoverTooltip extends React.PureComponent<Props, State> {
             ],
           }}>
             <TouchableOpacity
+              style={[
+                this.props.overlayButtonStyle,
+              ]}
               onPress={this.toggle}
               activeOpacity={1.0}
             >
